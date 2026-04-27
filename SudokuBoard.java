@@ -1,6 +1,7 @@
 // Aaron Kaufman
 // CS 143
 // Creating a Sudoku Board
+//I am learning to use git!
 package Sudoku;
 
 public class SudokuBoard {
