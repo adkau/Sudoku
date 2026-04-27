@@ -1,6 +1,8 @@
 // Aaron Kaufman
 // CS 143
-// Creating a Sudoku Board
+//HW #1: Sudoku #1 (Board Setup)
+
+// Creates a Sudoku Board as an object using a file as the contents of the board
 package Sudoku;
 
 import java.util.*;

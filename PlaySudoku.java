@@ -1,6 +1,9 @@
 // Aaron Kaufman
 // CS 143
-// Main Class for the Sudoku Board project
+//HW #1: Sudoku #1 (Board Setup)
+
+// Main Class for the Sudoku Board project that prints out the board
+
 package Sudoku;
 
 import java.io.*;
