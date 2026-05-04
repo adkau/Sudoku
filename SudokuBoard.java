@@ -91,14 +91,16 @@ public class SudokuBoard {
    }
 
    //pre: none
-   //post: returns valid if the board diesbt have  any duplicate values in rows, collumn, or minisquares, as well as all values are an int
+   //post: returns valid if the board doesnt have any duplicate values in rows, collumn, or minisquares, as well as all values are an int
+   //uses all 3 helper methods
     public boolean isValid() {
+        //loops through each mini square
         for(int i = 1; i <= 9; i++) {
             if(isMiniValid(miniSquare(i)) == false) {
                 return false;
             }
         }
-        //checks for duplicates between each row
+        //checks for duplicates between each row and col
         if(isRowValid() == true && isColValid() == true) {
             return true;
         } else {
@@ -106,6 +108,9 @@ public class SudokuBoard {
         }
     }
 
+    //helper method for isValid
+    //pre: none
+    //post: returns true if each row contains no duplicate values and all values are  1-9 (0s are a blank space)
     private boolean isRowValid() {
         for(int row = 0; row < board.length; row++) {
             //hashmap to count the amount of times each int occurs
@@ -130,6 +135,9 @@ public class SudokuBoard {
         return true; 
     }
 
+    //helper method for isValid
+    //pre: none
+    //post: returns true if each column contains no duplicate values and all values are 1-9 (0s are a blank space)
     private boolean isColValid() {
         for(int col = 0; col < board[0].length; col++) {
             Map<Integer, Integer> counter = new HashMap<>();
@@ -153,12 +161,19 @@ public class SudokuBoard {
         return true; 
     }
 
+    //helper method for isvalid
+    //pre: valid miniSquare location is given (1-9)
+    //post: returns true if the mini square doesnt contain any duplicate values and if all values are 1-9 (besides the blank space 0)
     private boolean isMiniValid(int[][] miniSquare) {
         Map<Integer, Integer> counter = new HashMap<>();
         for(int row = 0; row < miniSquare.length; row++) {
             for(int col = 0; col < miniSquare[row].length; col++) {
                 int value = miniSquare[row][col];
-                if(value != 0) {
+                //if the value isnt 1 - 9 or 0 which is my blank space
+                if (value >= 10 || value < 0) {
+                    return false;
+                }
+                if(value != 0) { //ignore 0 because its our blank space
                 counter.put(value, counter.getOrDefault(value, 0) + 1);
                 }
             }
@@ -172,6 +187,8 @@ public class SudokuBoard {
         return true;
     }
 
+    //pre: none
+    //post: returns true if the board is solved, false if it is not
     public boolean isSolved() {
         //if there is nine of every single number and the board is valid, the board is solved
         if (isValid() == true && allNumbers() == true) {
@@ -182,9 +199,12 @@ public class SudokuBoard {
 
 
     }
-
+    
+    //helper method for isSolved
+    //pre: none
+    //post: returns true if there is 9 of each number
     private boolean allNumbers() {
-        Map<Integer, Integer> counter = new HashMap<>();
+        Map<Integer, Integer> counter = new HashMap<>(); //map outside the loop because we want every single value on the board not just in each row/col
         for(int col = 0; col < board[0].length; col++) {
             for(int row = 0; row < board.length; row++) {
                 int value = board[row][col];
@@ -192,10 +212,10 @@ public class SudokuBoard {
             }
         }
         for (int count : counter.values()) {
-                if (count != 9) { //there has to be 9 of every single number
+                if (count != 9) { //there has to be a count of 9 for every single number 1-9
                     return false;
                 }
             }
-        return true;
+        return true; //returns true if all counts are 9
     }
 }
