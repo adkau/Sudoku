@@ -90,13 +90,93 @@ public class SudokuBoard {
       return mini;
    }
 
+   //pre: none
+   //post: returns valid if the board diesbt have  any duplicate values in rows, collumn, or minisquares, as well as all values are an int
     public boolean isValid() {
+        for(int i = 1; i <= 9; i++) {
+            if(isMiniValid(miniSquare(i)) == false) {
+                return false;
+            }
+        }
+        //checks for duplicates between each row
+        if(isRowValid() == true && isColValid() == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isRowValid() {
+        for(int row = 0; row < board.length; row++) {
+            //hashmap to count the amount of times each int occurs
+            Map<Integer, Integer> counter = new HashMap<>();
+            for(int col = 0; col < board[row].length; col++) {
+                int value = board[row][col];
+                //zero is my blank space so we want to ignore it
+                if (value >= 10 || value < 0) {
+                    return false;
+                }
+                if(value != 0) {
+                counter.put(value, counter.getOrDefault(value, 0) + 1);
+                }
+            }
+            //loops through map checking that the count of each number isnt 1 or else that means the number repeats
+            for (int count : counter.values()) {
+                if (count > 1) {
+                    return false;
+                }
+            }
+        }   
+        return true; 
+    }
+
+    private boolean isColValid() {
+        for(int col = 0; col < board[0].length; col++) {
+            Map<Integer, Integer> counter = new HashMap<>();
+            for(int row = 0; row < board.length; row++) {
+                int value = board[row][col];
+                //if the value isnt 1 - 9 or 0 which is my blank space
+                if (value >= 10 || value < 0) {
+                    return false;
+                } //zero is my blank space so it can be duplicated
+                if(value != 0) {
+                counter.put(value, counter.getOrDefault(value, 0) + 1);
+                }
+            }
+            //loops through map checking that the count of each number isnt 1 or else that means the number repeats
+            for (int count : counter.values()) {
+                if (count > 1) {
+                    return false;
+                }
+            }
+        } 
+        return true; 
+    }
+
+    private boolean isMiniValid(int[][] miniSquare) {
+        Map<Integer, Integer> counter = new HashMap<>();
+        for(int row = 0; row < miniSquare.length; row++) {
+            for(int col = 0; col < miniSquare[row].length; col++) {
+                int value = miniSquare[row][col];
+                if(value != 0) {
+                counter.put(value, counter.getOrDefault(value, 0) + 1);
+                }
+            }
+        }  
+        //loops through map checking that the count of each number isnt 1 or else that means the number repeats
+        for (int count : counter.values()) {
+            if (count > 1) {
+                    return false;
+            }
+        }
         return true;
     }
 
     public boolean isSolved() {
+        if (isValid() == true) {
         return true;
-
+        }
+        return false;
     }
 
     
