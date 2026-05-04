@@ -173,11 +173,29 @@ public class SudokuBoard {
     }
 
     public boolean isSolved() {
-        if (isValid() == true) {
-        return true;
+        //if there is nine of every single number and the board is valid, the board is solved
+        if (isValid() == true && allNumbers() == true) {
+            return true;
+        } else {
+            return false;
         }
-        return false;
+
+
     }
 
-    
+    private boolean allNumbers() {
+        Map<Integer, Integer> counter = new HashMap<>();
+        for(int col = 0; col < board[0].length; col++) {
+            for(int row = 0; row < board.length; row++) {
+                int value = board[row][col];
+                counter.put(value, counter.getOrDefault(value, 0) + 1);
+            }
+        }
+        for (int count : counter.values()) {
+                if (count != 9) { //there has to be 9 of every single number
+                    return false;
+                }
+            }
+        return true;
+    }
 }
