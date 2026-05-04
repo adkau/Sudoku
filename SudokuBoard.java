@@ -91,10 +91,11 @@ public class SudokuBoard {
    }
 
     public boolean isValid() {
-        
+        return true;
     }
 
     public boolean isSolved() {
+        return true;
 
     }
 
