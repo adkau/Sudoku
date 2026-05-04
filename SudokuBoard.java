@@ -1,6 +1,6 @@
 // Aaron Kaufman
 // CS 143
-//HW #1: Sudoku #1 (Board Setup)
+//HW #2: Sudoku #2 (creating and isValid and isSolved method)
 
 // Creates a Sudoku Board as an object using a file as the contents of the board
 package Sudoku;
