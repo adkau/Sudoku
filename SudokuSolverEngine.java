@@ -23,6 +23,12 @@ public class SudokuSolverEngine {
    public static void main(String[] args) throws FileNotFoundException {
       // Here I have called my class `MySudokuBoard` if you named your class
       // differently, modify the line below to use your own class name
+      SudokuBoard invalid = new SudokuBoard("boards/empty.sdk");
+      solvedBoard(invalid);
+      invalidBoard(invalid);
+      SudokuBoard complete = new SudokuBoard("boards/valid-complete.sdk");
+      solvedBoard(complete);
+      invalidBoard(complete);
       SudokuBoard board = new SudokuBoard("boards/very-fast-solve.sdk");
       solvedBoard(board);
       invalidBoard(board);
