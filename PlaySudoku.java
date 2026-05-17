@@ -13,7 +13,7 @@ public class PlaySudoku {
     //pre: nothing
     //post: main method that prints the sudoku board using the SudokuBoard class
     public static void main(String[] args) throws FileNotFoundException {
-        SudokuBoard game = new SudokuBoard("Sudoku/data1.sdk");
+        SudokuBoard game = new SudokuBoard("data1.sdk");
         System.out.println(game);
     }
     
