@@ -1,6 +1,6 @@
 // Aaron Kaufman
 // CS 143
-//HW #2: Sudoku #2 (isValid and isSolved)
+//HW #3: Sudoku #3 (solve method)
 
 // A class that checks if the implemented sudoku elements are working properly
 
