@@ -3,7 +3,7 @@
 //HW #2: Sudoku #2 (isValid and isSolved)
 
 // A class that checks if the implemented sudoku elements are working properly
-package Sudoku;
+
 
 import java.util.*;
 import java.io.*;

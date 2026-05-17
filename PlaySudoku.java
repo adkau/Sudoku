@@ -4,7 +4,7 @@
 
 // Main Class for the Sudoku Board project that prints out the board
 
-package Sudoku;
+
 
 import java.io.*;
 import java.util.*;

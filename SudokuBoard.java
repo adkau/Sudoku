@@ -3,7 +3,7 @@
 //HW #3: Sudoku #3 (creating the solve method using recursion)
 
 // Creates a Sudoku Board as an object using a file as the contents of the board
-package Sudoku;
+
 
 import java.util.*;
 import java.io.*;
@@ -190,15 +190,21 @@ public class SudokuBoard {
     //pre: the board is valid and can be solved, otherwise it will return false
     //post: solves the sudoku board using recursion and returns true
     public boolean solve() {
+        
+        if (isValid() == false) {
+            return false;
+        }
+
+        if(isSolved() == true) {
+            return true;
+        }
+
         for(int row = 0; row < board.length; row++) {
             for(int col = 0; col < board[row].length; col++) {
                 //loop through to find a blank space
-
                 if(board[row][col] == 0) { //0 is the placeholder for a blank space
-
                     for(int num = 1; num <= 9; num++) { //loop through each number 1 through 9
                         board[row][col] = num;
-
                         if(isValid()) { //if the number is a valid move, calls solve again to see if this is the right move to solve the board
                             if(solve() == true) {
                                 return true; //if the board is solved, return true
