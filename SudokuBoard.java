@@ -190,14 +190,14 @@ public class SudokuBoard {
     //pre: the board is valid and can be solved, otherwise it will return false
     //post: solves the sudoku board using recursion and returns true
     public boolean solve() {
+        //the board is invalid so we cant solve it
         if (isValid() == false) {
             return false;
         }
-
+        //the board is already solved so we can return true
         if(isSolved() == true) {
             return true;
         }
-
         for(int row = 0; row < 9; row++) {
             for(int col = 0; col < 9; col++) {
                 //loop through to find a blank space
@@ -205,11 +205,11 @@ public class SudokuBoard {
                     for(int num = 1; num <= 9; num++) { //loop through each number 1 through 9
                         board[row][col] = num;
                         if(isValid()) { //if the number is a valid move, calls solve again to see if this is the right move to solve the board
-                            if(solve() == true) {
+                            if(solve() == true) { //recursive call to solve, keeps going until the board is solved or goes back if the board is not vlaid
                                 return true; //if the board is solved, return true
                             }
                         } else {
-                            board[row][col] = 0;
+                            board[row][col] = 0; //if the move is not valid, change it back to a blank space and try the next number
                         }
                     }
                     return false; //if no number works, return false

@@ -23,16 +23,18 @@ public class SudokuSolverEngine {
       else
          System.out.println("the board is not solved yet");
    }
-
+   //tests the solve method on different sudoku boards
    public static void main(String[] args) throws FileNotFoundException {
       // Here I have called my class `MySudokuBoard` if you named your class
       // differently, modify the line below to use your own class name
       SudokuBoard invalid = new SudokuBoard("boards/col-violation.sdk");
       solvedBoard(invalid);
       invalidBoard(invalid);
+      System.out.println(invalid);
       SudokuBoard complete = new SudokuBoard("boards/valid-complete.sdk");
       solvedBoard(complete);
       invalidBoard(complete);
+       System.out.println(complete);
       SudokuBoard board = new SudokuBoard("boards/very-fast-solve.sdk");
       solvedBoard(board);
       invalidBoard(board);
@@ -61,11 +63,36 @@ public class SudokuSolverEngine {
       System.out.println(board1);
    }
 }
-/**
- * the board is not solved yet
+/* the board is not solved yet
 the board is in an invalid state so it cannot be solved
+-------------------------------
+| 9       |         |         |
+|         |         |         |
+| 6       |         |         |
+-------------------------------
+|         |         |         |
+| 4       |         |         |
+| 3       |         |         |
+-------------------------------
+|         |         |         |
+| 9       |         |         |
+|         |         |         |
+-------------------------------
 the board is already solved
 the board is in a valid state so it can be solved
+-------------------------------
+| 5  3  4 | 6  7  8 | 9  1  2 |
+| 6  7  2 | 1  9  5 | 3  4  8 |
+| 1  9  8 | 3  4  2 | 5  6  7 |
+-------------------------------
+| 8  5  9 | 7  6  1 | 4  2  3 |
+| 4  2  6 | 8  5  3 | 7  9  1 |
+| 7  1  3 | 9  2  4 | 8  5  6 |
+-------------------------------
+| 9  6  1 | 5  3  7 | 2  8  4 |
+| 2  8  7 | 4  1  9 | 6  3  5 |
+| 3  4  5 | 2  8  6 | 1  7  9 |
+-------------------------------
 the board is not solved yet
 the board is in a valid state so it can be solved
 Initial board
@@ -115,7 +142,7 @@ Initial board
 | 2  3  9 | 8  4    |         |
 -------------------------------
 
-Solving board...SOLVED in 0.003 seconds.
+Solving board...SOLVED in 0.004 seconds.
 
 -------------------------------
 | 8  2  7 | 1  5  4 | 3  9  6 |
