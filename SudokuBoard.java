@@ -190,7 +190,6 @@ public class SudokuBoard {
     //pre: the board is valid and can be solved, otherwise it will return false
     //post: solves the sudoku board using recursion and returns true
     public boolean solve() {
-        
         if (isValid() == false) {
             return false;
         }
@@ -199,8 +198,8 @@ public class SudokuBoard {
             return true;
         }
 
-        for(int row = 0; row < board.length; row++) {
-            for(int col = 0; col < board[row].length; col++) {
+        for(int row = 0; row < 9; row++) {
+            for(int col = 0; col < 9; col++) {
                 //loop through to find a blank space
                 if(board[row][col] == 0) { //0 is the placeholder for a blank space
                     for(int num = 1; num <= 9; num++) { //loop through each number 1 through 9
